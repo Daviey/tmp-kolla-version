@@ -1,3 +1,4 @@
+```
 $ ansible-playbook -i inventory.txt -e "openstack_release=3.0.0" verison_example.yml 
 
 PLAY [all] *********************************************************************
@@ -21,10 +22,9 @@ ok: [localhost] => {
 
 PLAY RECAP *********************************************************************
 localhost                  : ok=4    changed=1    unreachable=0    failed=0   
+```
 
-
-
-
+```
 $ ansible-playbook -i inventory.txt -e "openstack_release=current" verison_example.yml 
 
 PLAY [all] *********************************************************************
@@ -48,3 +48,5 @@ ok: [localhost] => {
 
 PLAY RECAP *********************************************************************
 localhost                  : ok=4    changed=1    unreachable=0    failed=0  
+
+```
