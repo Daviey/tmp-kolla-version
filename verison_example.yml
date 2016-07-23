@@ -1,0 +1,24 @@
+---
+- hosts: all
+  tasks:
+  - name: Determine version of Kolla we have
+    run_once: true
+    command: python -c "import pbr.version ; print pbr.version.VersionInfo('kolla').release_string()"
+    register: kolla_version
+
+  - name: Use the current installed version of kolla images
+    set_fact:
+      kolla_release: "{{ kolla_version.stdout }}"
+    when:
+      openstack_release == "current"
+
+  - name: Use the global.yml configed version, rather than the installed
+    set_fact:
+      kolla_release: "{{ openstack_release }}"
+    when:
+      openstack_release != "current"
+
+  - name: Carry on, but for this just display what release we would be using
+    debug: var=kolla_release
+
+# etc etc
